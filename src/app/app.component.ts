@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormsModule}  from '@angular/forms'
 
 
@@ -12,18 +12,18 @@ import {FormsModule}  from '@angular/forms'
 export class AppComponent {
   title = 'InputSum';
 
-    inputValue:number  = 0;
+    inputValue:number | null =null;
     textValue:string='';
 
     convertToText() {
-      this.textValue = this.numberToWords(this.inputValue);
+      this.textValue = this.inputValue !== null ? this.numberToWords(this.inputValue): '';
     }
 
     numberToWords(num:number):string{
       if(num === 0) return "Nol"
 
       const ones = ["", "Bir", "Ikki", "Uch", "To'rt", "Besh", "Olti", "Yett", "Sakkiz", "To'qqiz"];
-      const teens = ["o'n", "O'n bir", "O'n ikki", "O'n uch", "O'n to'rt", "O'n besh", "O'n olti", "O'n yetti", "O'n sakkiz", "O'n to'qqiz"];
+      const teens = ["O'n", "O'n bir", "O'n ikki", "O'n uch", "O'n to'rt", "O'n besh", "O'n olti", "O'n yetti", "O'n sakkiz", "O'n to'qqiz"];
       const tens = ["", "", "Yigirma", "O'ttiz", "Qirq", "Elli", "Oltmish", "Yetmish", "Sakson", "To'qson"];
       const thousands = ["", "Ming", "Million", "Milliard"];
 
